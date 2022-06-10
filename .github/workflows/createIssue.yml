@@ -1,0 +1,43 @@
+name: Create an issue
+
+on: 
+   [push]
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get today's date
+        id: date
+        run: |
+          echo "::set-output name=today::$(date +"%Y-%m-%d")"
+      - name: Check out current repository
+        uses: actions/checkout@v3
+        with:
+            fetch-depth: 0            
+      - name: Last commit
+        id: last_commit_date
+        run: |
+              echo "::set-output name=OUTPUT::$( 1 )"
+              echo "::set-output name=lastcommit::$(git log -1 --format=%cd --date=local --date=short)"
+      - name: Differenz
+        id: diff
+        run: |
+           echo "${{ steps.date.outputs.today }}"
+           echo "${{ steps.last_commit_date.outputs.lastcommit }}"
+           echo "${{ steps.date.outputs.today }}==${{ steps.last_commit_date.outputs.lastcommit }}"
+           echo "${{ steps.last_commit_date.outputs.OUTPUT }}"
+           echo $HOME
+      - name: Create an issue
+        if: ${{ 1>2 }}
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: ${{ steps.date.outputs.today }}
+          body: |
+            ## Was ist los?
+            Das letzte commit vom ${{ github.repository }} war am ${{ steps.last_commit_date.outputs.lastcommit }}
+            - [ ] Keine Lust mehr
+            - [ ] Kein Plan
+          labels: |
+            alerting
+            daily         
