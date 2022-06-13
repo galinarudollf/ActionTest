@@ -34,6 +34,7 @@ jobs:
       - name: Test 
         run: |
            pwd
+           cd .github/workflows/
            python test_zeiten.py ${{ steps.last_commit_date.outputs.lastcommit }}
       - name: Create an issue
         if: ${{ 1>2 }}
