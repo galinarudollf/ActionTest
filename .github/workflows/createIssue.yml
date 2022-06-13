@@ -28,16 +28,14 @@ jobs:
         run: |
            echo "${{ steps.date.outputs.today }}"
            echo "${{ steps.last_commit_date.outputs.lastcommit }}"
-           echo "${{ steps.date.outputs.today }}==${{ steps.last_commit_date.outputs.lastcommit }}"
            echo "${{ steps.last_commit_date.outputs.OUTPUT }}"
-           echo $HOME
       - name: Test 
         run: |
            pwd
            cd .github/workflows/
            python test_zeiten.py ${{ steps.last_commit_date.outputs.lastcommit }}
       - name: Create an issue
-        if: ${{ 1>2 }}
+        if: ${{ python test_zeiten.py ${{ steps.last_commit_date.outputs.lastcommit }}>0 }}
         uses: actions-ecosystem/action-create-issue@v1
         with:
           github_token: ${{ secrets.github_token }}
