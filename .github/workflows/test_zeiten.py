@@ -6,6 +6,7 @@ def foo(zeit_str):
     d2=datetime.now()
 #    print(d2)
     print((d2-d1).seconds)
+# longer than a week?
     if (d2-d1).seconds > 7*24*60*60: 
         return 1
     else: 
