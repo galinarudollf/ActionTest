@@ -1,7 +1,9 @@
 name: Create an issue
 
+
 on: 
-   [push]
+    schedule:
+      - cron: '0 * * * *'
 jobs:
   create_issue:
     runs-on: ubuntu-latest
