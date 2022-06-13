@@ -13,5 +13,5 @@ def foo(zeit_str):
 
 
 zeit_str1=sys.argv[1]
-# print(foo(zeit_str1))
-return foo(zeit_str1)
+print(foo(zeit_str1))
+# return foo(zeit_str1)
