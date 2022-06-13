@@ -13,7 +13,11 @@ jobs:
       - name: Check out current repository
         uses: actions/checkout@v3
         with:
-            fetch-depth: 0            
+            fetch-depth: 0     
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.9
       - name: Last commit
         id: last_commit_date
         run: |
@@ -27,6 +31,10 @@ jobs:
            echo "${{ steps.date.outputs.today }}==${{ steps.last_commit_date.outputs.lastcommit }}"
            echo "${{ steps.last_commit_date.outputs.OUTPUT }}"
            echo $HOME
+      - name: Test 
+        run: |
+           pwd
+           python test_zeiten.py ${{ steps.last_commit_date.outputs.lastcommit }}
       - name: Create an issue
         if: ${{ 1>2 }}
         uses: actions-ecosystem/action-create-issue@v1
