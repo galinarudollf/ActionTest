@@ -33,7 +33,7 @@ jobs:
            cd .github/workflows/
            echo "::set-output name=test::$(python test_zeiten.py ${{ steps.last_commit_date.outputs.lastcommit }})"
       - name: Create an issue
-#        if: ${{ ${{ steps.test.outputs.test }}>0 }}
+        if: ${{ steps.test.outputs.test>0 }}
         uses: actions-ecosystem/action-create-issue@v1
         with:
           github_token: ${{ secrets.github_token }}
