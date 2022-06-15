@@ -9,10 +9,10 @@ jobs:
   create_issue:
     runs-on: ubuntu-latest
     steps:
-#      - name: Get today's date
-#        id: date
-#        run: |
-#         echo "::set-output name=today::$(date +"%Y-%m-%d")"
+      - name: Get today's date
+        id: date
+        run: |
+         echo "::set-output name=today::$(date +"%Y-%m-%d")"
       - name: Check out current repository
         uses: actions/checkout@v3
         with:
@@ -25,11 +25,11 @@ jobs:
         id: last_commit_date
         run: |
               echo "::set-output name=lastcommit::$(git log -1 --format=%cd --date=local --date=short)"
-#      - name: Differenz
-#        id: diff
-#        run: |
-#           echo "${{ steps.date.outputs.today }}"
-#           echo "${{ steps.last_commit_date.outputs.lastcommit }}"
+      - name: Differenz
+        id: diff
+        run: |
+           echo "${{ steps.date.outputs.today }}"
+           echo "${{ steps.last_commit_date.outputs.lastcommit }}"
       - name: Test of need
         id: test
         run: |
