@@ -25,6 +25,7 @@ jobs:
         id: last_commit_date
         run: |
               echo "::set-output name=lastcommit::$(git log -1 --format=%cd --date=local --date=short)"
+              echo "::set-output name=firstcommit::$(git log --reverse --format=%cd --date=local --date=short |head -n 1)"
 #      - name: Differenz
 #        id: diff
 #        run: |
