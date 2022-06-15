@@ -5,12 +5,12 @@ def foo(zeit_str):
 #    print(d1)
     d2=datetime.now()
 #    print(d2)
-    print((d2-d1).seconds)
+#    print((d2-d1).seconds)
 # longer than a week?
 #    if (d2-d1).seconds > 7*24*60*60: 
-#        return 1
+#        return '1'
 #    else: 
-#        return 0
+#        return '0'
     return '1'
 
 zeit_str1=sys.argv[1]
