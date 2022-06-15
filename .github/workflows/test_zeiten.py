@@ -11,7 +11,7 @@ def foo(zeit_str):
 #        return 1
 #    else: 
 #        return 0
-    return '1'
+    return 1
 
 zeit_str1=sys.argv[1]
 print(foo(zeit_str1))
